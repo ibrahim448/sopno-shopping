@@ -5,8 +5,7 @@ import Cart from '../Cart/Cart';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-   
-
+   const [cart, setCart] = useState([]);
 
     useEffect( ()=>{
 
@@ -16,7 +15,13 @@ const Shop = () => {
 
     }, []);
 
+    //EventHandler
+    const cartEventHandler = (product)=>{
 
+        const newCart = [...cart,product];
+        setCart(newCart);
+       
+    }
    
 
 
@@ -28,7 +33,7 @@ const Shop = () => {
             <div className="products-container">
                <div className='products'>
                 {
-                    products.map(product => <Product key={product.id} product={product} ></Product>)
+                    products.map(product => <Product key={product.id} product={product} cartEventHandler={cartEventHandler}></Product>)
                 }
                </div>
 
@@ -38,7 +43,7 @@ const Shop = () => {
 
 
             <div className="cart-container">
-                <Cart></Cart>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );
