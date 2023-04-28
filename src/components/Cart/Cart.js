@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Cart.css";
-import { parse } from '@fortawesome/fontawesome-svg-core';
 
 const Cart = (props) => {
   const {cart} = props;
@@ -16,7 +15,6 @@ const Cart = (props) => {
   const tax = parseFloat(price * 0.1);
   const grandPrice = (price + shipping + tax).toFixed(2);
    
-
     return (
         <div className='cart'>
             <h1>Order Summary</h1>
