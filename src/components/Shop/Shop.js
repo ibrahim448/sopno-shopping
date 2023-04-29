@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./Shop.css";
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
-import { fakeCartDb } from '../../utilities/FakecartDb';
+import { fakeCartDb, localStorageData } from '../../utilities/FakecartDb';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -15,6 +15,30 @@ const Shop = () => {
         .then(data => setProducts(data))
 
     }, []);
+
+    //laocal storage data load
+
+    useEffect( ()=>{
+        const loadLocalStorageData = localStorageData();
+        const productAddToCart = [];  
+        // console.log(loadLocalStorageData)  ////////object pabo jekhane cart a add kora id thakbe
+        for(const id in loadLocalStorageData){
+            // console.log(id) /////// cart a add kora sokol id pabo
+            const findProductById = products.find(product => product.id === id);
+            // console.log(findProductById)  ///// add kora id diye product pabo
+            if(findProductById){
+                const quantity = loadLocalStorageData[id];
+                // console.log(quantity);
+                findProductById.quantity = quantity;
+                // console.log(findProductById)   /// product pabo and tar quantity pabo
+                productAddToCart.push(findProductById);
+                // console.log(productAddToCart)
+            }
+        }
+
+        setCart(productAddToCart);
+
+    }, [products])
 
     //EventHandler
     const cartEventHandler = (product)=>{
