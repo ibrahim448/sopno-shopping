@@ -42,8 +42,22 @@ const Shop = () => {
 
     //EventHandler
     const cartEventHandler = (product)=>{
+        let newCart = [];
+        const productHaveToCart = cart.find(selectedProduct => selectedProduct.id === product.id);
+        // console.log(productHaveToCart)
+        if(!productHaveToCart){
+            product.quantity = 1;
+            newCart = [...cart, product];
+        }
+        else{
+            const checkProductToCart = cart.filter( selectedProduct => selectedProduct.id !==product.id);
+            productHaveToCart.quantity = productHaveToCart.quantity + 1;
 
-        const newCart = [...cart,product];
+            newCart = [...checkProductToCart, productHaveToCart];
+
+        }
+
+        
         setCart(newCart);
 
         fakeCartDb(product.id)
