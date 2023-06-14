@@ -15,10 +15,12 @@ function App() {
       children: [
         {
           path: "shop",
+          loader: ()=> fetch("products.json"),
           element: <Shop></Shop>
         },
         {
           path: 'orders',
+          loader: ()=> fetch("products.json"),
           element: <Orders></Orders>
         },
         {

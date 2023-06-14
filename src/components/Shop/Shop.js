@@ -3,18 +3,20 @@ import "./Shop.css";
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { fakeCartDb, localStorageData } from '../../utilities/FakecartDb';
+import { useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    const products = useLoaderData();
+    // const [products, setProducts] = useState([]);
    const [cart, setCart] = useState([]);
 
-    useEffect( ()=>{
+    // useEffect( ()=>{
 
-        fetch("products.json")
-        .then(res => res.json())
-        .then(data => setProducts(data))
+    //     fetch("products.json")
+    //     .then(res => res.json())
+    //     .then(data => setProducts(data))
 
-    }, []);
+    // }, []);
 
     //laocal storage data load
 
