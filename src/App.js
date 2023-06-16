@@ -5,6 +5,7 @@ import About from './components/About/About'
 import Shop from './components/Shop/Shop';
 import Orders from './components/Orders/Orders';
 import Review from './components/Review/Review';
+import { productsAndCartLoader } from './components/Loaders/ProductsAndCartLoaders';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         },
         {
           path: 'orders',
-          loader: ()=> fetch("products.json"),
+          loader: productsAndCartLoader,
           element: <Orders></Orders>
         },
         {
