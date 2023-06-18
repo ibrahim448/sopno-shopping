@@ -37,7 +37,11 @@ const removeDataDb = id=>{
         localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart))
        }
     }
+};
+
+const deleteShoppingCart = ()=>{
+    localStorage.removeItem('shopping-cart');
 }
 
 
-export{fakeCartDb, localStorageData, removeDataDb};
+export{fakeCartDb, localStorageData, removeDataDb, deleteShoppingCart};
